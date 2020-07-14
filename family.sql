@@ -36,36 +36,6 @@ CREATE TABLE family
     CONSTRAINT mother_is_female check (is_sex(mother, 'F'))
 );
 
-
-
-INSERT INTO person
-VALUES (1, 'Daniel', '1995-11-03', 'M');
-INSERT INTO person
-VALUES (2, 'Claudia', '1961-11-03', 'F');
-INSERT INTO person
-VALUES (3, 'Peter', '1972-11-03', 'M');
-INSERT INTO person
-VALUES (4, 'MICHAEL', '1998-10-03', 'M');
-INSERT INTO person
-VALUES (5, 'Charlotte', '2000-02-18', 'F');
-
-
--- Passes Constraints
-INSERT INTO FAMILY
-VALUES (1, 3, 2);
-INSERT INTO FAMILY
-VALUES (4, 3, 2);
-INSERT INTO FAMILY
-VALUES (5, 3, 2);
-
--- Fails Constraints (Person has second family)
-INSERT INTO FAMILY
-VALUES (1, 3, 2);
-
--- Fails Constraints (Wrong genders for parents)
-INSERT INTO FAMILY
-VALUES (1, 2, 3);
-
 -- Children of a given couple
 SELECT name as child_name, gender as child_gender
 FROM (SELECT *
@@ -109,33 +79,10 @@ CREATE TABLE husband_wife(
     CONSTRAINT wife_is_female check (is_sex(wife, 'F'))
 );
 
-
-INSERT INTO brother VALUES(1,4);
-INSERT INTO brother VALUES(4,1);
-INSERT INTO brother VALUES(1,5);
-INSERT INTO brother VALUES(4,5);
-
-INSERT INTO sister VALUES(5,1);
-INSERT INTO sister VALUES(5,4);
-
-INSERT INTO brother_sister VALUES(1,5);
-INSERT INTO brother_sister VALUES(4,5);
-
-INSERT INTO husband_wife VALUES(3,2);
-INSERT INTO husband_wife VALUES(6,7);
-INSERT INTO husband_wife VALUES(9,8);
-
-
 -- Sister in law
 -- i) wife of a person's brother -- navida is sister-in-law of michael/charlotte
 -- ii) sister of a person's wife or husband -- charlotte is navida's sister-in-law, rafi is my "sister-in-law"
 -- iii) wife of the brother of a person's wife or husband -- michael's wife is navida's sister in law, cara is my sister in law
-INSERT INTO person VALUES(10,'Navida','1996-05-16','F');
-INSERT INTO person VALUES(11,'Rafi','1997-03-23','M');
-INSERT INTO brother VALUES(11,10);
-INSERT INTO sister VALUES(10,11);
-INSERT INTO brother_sister VALUES(11,10);
-
 
 DROP TABLE sister;
 DROP TABLE brother;
