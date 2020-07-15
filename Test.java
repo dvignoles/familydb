@@ -199,20 +199,6 @@ class Person implements SQLFamily{
     private String gender;
     private static Connection c = SQLFamily.myConnection();
 
-    // public static void printResultSet(ResultSet resultSet) throws SQLException{
-    //     ResultSetMetaData rsmd = resultSet.getMetaData();
-    //     int columnsNumber = rsmd.getColumnCount();
-    //     while (resultSet.next()) {
-    //         for (int i = 1; i <= columnsNumber; i++) {
-    //             if (i > 1) System.out.print(",  ");
-    //             String columnValue = resultSet.getString(i);
-    //             System.out.print(columnValue + " " + rsmd.getColumnName(i));
-    //         }
-    //         System.out.println("");
-    //     }
-    //     System.out.println("");
-    // }
-
     public static void printResultSet(ResultSet resultSet) throws SQLException{
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
